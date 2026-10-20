@@ -1,0 +1,12 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "args": ["/K", "C:\\Users\\Omen\\Documents\\19job\\.venv\\Scripts\\activate.bat"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "files.exclude": {"**/__pycache__": true},
+  "search.exclude": {"**/.venv": true}
+}
