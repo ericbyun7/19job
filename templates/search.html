@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잡스크래퍼 검색</title>
+</head>
+<body>
+    <h1>안녕하세요 잡스크래퍼입니다</h1>
+    <p>잡서치 결과 페이지입니다</p>
+    <p>{{ data }}</p>
+    <form action="{{ url_for('search_page') }}" method="get">
+        <label for="keyword">검색어</label>
+        <input type="search" id="keyword" name="keyword"
+               placeholder="예: 파이썬" value="{{ keyword }}" required>
+        <button type="submit">검색</button>
+    </form>
+    {% if keyword %}
+    <p>입력한 검색어: {{ keyword }}</p>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% else %}
+    <p>찾은 채용 공고: {{ jobs | length }}개</p>
+    <table>
+        <thead>
+            <tr><th>company</th><th>title</th><th>location</th><th>link</th></tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.company }}</td>
+                <td>{{ job.title }}</td>
+                <td>{{ job.location }}</td>
+                <td><a href="{{ job.link }}" target="_blank" rel="noopener noreferrer">공고 보기</a></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4">검색 결과가 없어요.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endif %}
+</body>
+</html>
